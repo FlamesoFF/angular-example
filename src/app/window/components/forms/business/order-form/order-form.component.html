@@ -1,0 +1,160 @@
+<div class="form-title">
+
+    <app-drag-n-drop (onDrop)="onDrop($event)"></app-drag-n-drop>
+
+    <!-- <contact-widget></contact-widget> -->
+</div>
+
+<form
+    [formGroup]="formGroup"
+    ngxsForm='order.form'
+    autocomplete="off"
+>
+    <!-- Order -->
+    <mat-form-field>
+        <input
+            #order
+            matInput
+            type="text"
+            placeholder="Number"
+            formControlName="order"
+            [matAutocomplete]="orderAutocomplete"
+        />
+
+        <mat-autocomplete
+            #orderAutocomplete="matAutocomplete"
+            (optionSelected)="onOrderSelected($event)"
+            [displayWith]="display.order"
+        >
+
+            <mat-option
+                *ngFor="let item of orders$ | async"
+                [value]="item"
+            >
+                {{ item.number }}
+            </mat-option>
+
+        </mat-autocomplete>
+    </mat-form-field>
+
+    <!-- Manager -->
+    <mat-form-field>
+        <input
+            matInput
+            readonly="true"
+            type="text"
+            placeholder="Manager"
+            formControlName="manager"
+        />
+    </mat-form-field>
+
+    <div formGroupName="contact">
+
+        <!-- Contact -->
+        <mat-form-field>
+            <input
+                matInput
+                type="text"
+                placeholder="Contact"
+                formControlName="name"
+            />
+
+
+            <span
+                matSuffix
+                class="field-suffix"
+            >
+                {{ (form$ | async).model.contact.initials }}
+            </span>
+        </mat-form-field>
+
+    </div>
+
+    <!-- Client -->
+    <mat-form-field>
+        <input
+            matInput
+            type="text"
+            readonly="true"
+            placeholder="Client"
+            formControlName="client"
+        />
+    </mat-form-field>
+
+    <!-- Client Reference -->
+    <mat-form-field>
+        <input
+            matInput
+            type="text"
+            formControlName="clientReference"
+            placeholder="Client reference"
+        >
+    </mat-form-field>
+
+    <!-- Created on -->
+    <!-- <mat-form-field>
+        <input
+            formControlName="createdOn"
+            matInput
+            placeholder="Created on"
+        >
+    </mat-form-field> -->
+
+    <!-- Companies -->
+    <!-- <mat-form-field>
+        <mat-chip-list #companyList>
+            <mat-chip *ngFor="let company of data.dynamic.selectedCompanies"
+                      selectable="true"
+                      removable="true"
+                      (removed)="removeCompany(company)">
+
+                {{company.name}}
+
+                <mat-icon matChipRemove
+                          *ngIf="removable">cancel</mat-icon>
+
+            </mat-chip>
+
+            <input placeholder="Select company..."
+                   #company
+                   formControlName="companies"
+                   [matAutocomplete]="companyAutocomplete"
+                   [matChipInputFor]="companyList"
+                   [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                   [matChipInputAddOnBlur]="addOnBlur"
+                   (matChipInputTokenEnd)="add($event)"
+                   (change)="data.loaders.companies(company.value)" />
+        </mat-chip-list>
+
+        <mat-autocomplete #companyAutocomplete="matAutocomplete"
+                          (optionSelected)="addCompany($event)"
+                          [displayWith]="extractors.company">
+
+            <mat-option *ngFor="let company of data.observable.companies | async"
+                        [value]="company">
+                {{company.name}}
+            </mat-option>
+
+        </mat-autocomplete>
+    </mat-form-field> -->
+
+    <!-- Type -->
+    <!-- <mat-form-field>
+        <input matInput
+               placeholder="Types"
+               formControlName="type">
+    </mat-form-field> -->
+
+    <app-form-controls
+        [formGroup]="formGroup"
+        [controlPanel]="controls"
+    ></app-form-controls>
+
+    <span>{{ form$ | async | json }}</span>
+</form>
+
+<!--dev info-->
+<app-developer-info title="dev info">
+    <p>Selected entity ID: {{entityId}}</p>
+    <p>Order: {{formGroup.controls.order.value | json}}</p>
+</app-developer-info>

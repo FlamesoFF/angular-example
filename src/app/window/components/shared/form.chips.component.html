@@ -1,0 +1,36 @@
+<div [formGroup]="formGroup">
+    <mat-chip-list #list>
+        <mat-chip *ngFor="let item of selectedItems"
+                  selectable="true"
+                  removable="true"
+                  (removed)="onRemove(item)">
+
+            {{extractor(item)}}
+
+            <mat-icon matChipRemove
+                      *ngIf="removable">cancel</mat-icon>
+
+        </mat-chip>
+
+        <input #input
+               [placeholder]="placeholder"
+               [formControlName]="chipInput"
+               [matAutocomplete]="autocomplete"
+               [matChipInputFor]="list"
+               [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+               [matChipInputAddOnBlur]="addOnBlur"
+               (matChipInputTokenEnd)="add($event)"
+               (change)="loaders.companies(company.value)" />
+    </mat-chip-list>
+
+    <mat-autocomplete #autocomplete="matAutocomplete"
+                      (optionSelected)="selectItem($event)"
+                      [displayWith]="extractor">
+
+        <mat-option *ngFor="let item of observableData | async"
+                    [value]="item">
+            {{extractor(item)}}
+        </mat-option>
+
+    </mat-autocomplete>
+</div>

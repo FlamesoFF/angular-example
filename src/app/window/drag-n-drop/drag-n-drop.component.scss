@@ -1,0 +1,25 @@
+:host {
+    pointer-events: none;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    left: 16px;
+    right: 16px;
+    top: 16px;
+    bottom: 16px;
+    background-color: rgba(68, 138, 255, 0.2);
+    border: 3px dashed rgba(68, 138, 255, 0.38);
+    border-radius: 5px;
+    z-index: 10;
+    opacity: 1;
+
+    span {
+        text-transform: uppercase;
+        font-family: Roboto Condensed;
+        font-size: 26px;
+        font-weight: 400;
+        line-height: 26px;
+        color: rgba(68, 138, 255, 0.5);
+    }
+}

@@ -1,0 +1,60 @@
+{
+    "compileOnSave": false,
+    "compilerOptions": {
+        "module": "commonjs",
+        "target": "esnext",
+        "moduleResolution": "node",
+        "sourceMap": true,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "removeComments": true,
+        "noImplicitAny": false,
+        "noImplicitThis": true,
+        "alwaysStrict": true,
+        "allowJs": true,
+        "baseUrl": ".",
+        "esModuleInterop": true,
+        "isolatedModules": false,
+        "rootDir": "src/",
+        "types": [
+            "node",
+            "chrome"
+        ],
+        "typeRoots": [
+            "./node_modules/@types",
+            "./src/app/@types"
+        ],
+        "lib": [
+            "ES6",
+            "ES7",
+            "ES2018",
+            "ES2019",
+            "ES2020",
+            "DOM"
+        ],
+        "outDir": "dist",
+        "paths": {
+            "core-js/es7/reflect": [
+                "./node_modules/core-js/proposals/reflect-metadata"
+            ],
+            "@/*": [
+                "./src/*"
+            ]
+        },
+        "plugins": [
+            {
+                "name": "@angular/language-service"
+            }
+        ]
+    },
+    "files": [
+        "./src/globals.d.ts"
+    ],
+    "include": [
+        "src/**/*"
+    ],
+    "exclude": [
+        "node_modules",
+        "**/*.spec.ts"
+    ]
+}

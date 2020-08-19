@@ -1,0 +1,124 @@
+{
+    "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+    "project": {
+        "name": "gmail-grabber-2"
+    },
+    "apps": [
+        {
+            "name": "extension-entry-point",
+            "main": "app.content-script.ts",
+            "root": "src",
+            "outDir": "./dist/extension/",
+            "assets": [
+                "./manifest.json",
+                "./libs/inboxsdk.js",
+                "./assets/fonts",
+                "./../node_modules/material-components-web/dist/material-components-web.js"
+            ],
+            "tsconfig": "tsconfig.extension-entry-point.json",
+            "testTsconfig": "tsconfig.spec.json",
+            "prefix": "app.content",
+            "styles": [
+                "app.content.styles.scss"
+            ],
+            "scripts": [],
+            "environmentSource": "environments/environment.ts",
+            "environments": {
+                "dev": "environments/environment.ts",
+                "prod": "environments/environment.prod.ts"
+            }
+        },
+        {
+            "name": "app",
+            "main": "app.main.ts",
+            "root": "src",
+            "outDir": "./dist/extension/app/",
+            "assets": [
+                "assets",
+                "favicon.ico"
+            ],
+            "index": "./app/grabber/index.html",
+            "polyfills": "polyfills.ts",
+            "test": "test.ts",
+            "tsconfig": "tsconfig.app.json",
+            "testTsconfig": "tsconfig.spec.json",
+            "prefix": "app",
+            "styles": [
+                "app.styles.scss"
+            ],
+            "scripts": [],
+            "environmentSource": "environments/environment.ts",
+            "environments": {
+                "dev": "environments/environment.ts",
+                "prod": "environments/environment.prod.ts"
+            }
+        },
+        {
+            "name": "options",
+            "main": "app.options.ts",
+            "root": "src",
+            "outDir": "./dist/extension/options/",
+            "assets": [],
+            "index": "./options/options.html",
+            "polyfills": "polyfills.ts",
+            "tsconfig": "tsconfig.app.json",
+            "testTsconfig": "tsconfig.spec.json",
+            "prefix": "app.options",
+            "styles": [
+                "app.options.styles.scss"
+            ],
+            "scripts": [],
+            "environmentSource": "environments/environment.ts",
+            "environments": {
+                "dev": "environments/environment.ts",
+                "prod": "environments/environment.prod.ts"
+            }
+        },
+        {
+            "name": "background-script",
+            "root": "src",
+            "outDir": "./dist/extension/background-script/",
+            "assets": [],
+            "index": "background.html",
+            "main": "app.background-script.ts",
+            "polyfills": "polyfills.ts",
+            "tsconfig": "tsconfig.background-script.json",
+            "testTsconfig": "tsconfig.spec.json",
+            "prefix": "app.background",
+            "styles": [],
+            "scripts": [],
+            "environmentSource": "environments/environment.ts",
+            "environments": {
+                "dev": "environments/environment.ts",
+                "prod": "environments/environment.prod.ts"
+            }
+        }
+    ],
+    "e2e": {
+        "protractor": {
+            "config": "./protractor.conf.js"
+        }
+    },
+    "lint": [
+        {
+            "project": "src/tsconfig.app.json"
+        },
+        {
+            "project": "src/tsconfig.spec.json"
+        },
+        {
+            "project": "e2e/tsconfig.e2e.json"
+        }
+    ],
+    "test": {
+        "karma": {
+            "config": "./karma.conf.js"
+        }
+    },
+    "defaults": {
+        "styleExt": "scss",
+        "viewEncapsulation": "Emulated",
+        "changeDetection": "Default",
+        "component": {}
+    }
+}

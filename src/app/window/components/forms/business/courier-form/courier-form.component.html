@@ -1,0 +1,229 @@
+<div class="form-title"></div>
+
+<form
+    [formGroup]="formGroup"
+    ngxsForm='courier.form'
+    autocomplete="off"
+>
+
+    <!-- Number -->
+    <mat-form-field>
+        <input
+            matInput
+            type="text"
+            placeholder="number"
+            formControlName="number"
+        />
+
+        <!-- <mat-icon matSuffix>remove_red_eye</mat-icon> -->
+    </mat-form-field>
+
+    <!-- Client -->
+    <mat-form-field>
+        <input
+            matInput
+            type="text"
+            placeholder="Client"
+            formControlName="client"
+        />
+    </mat-form-field>
+
+    <!-- sender -->
+    <mat-form-field>
+        <input
+            #sender
+            matInput
+            type="text"
+            placeholder="sender"
+            formControlName="sender"
+            [matAutocomplete]="senderAutocomplete"
+        />
+
+        <mat-autocomplete #senderAutocomplete="matAutocomplete">
+
+            <mat-option
+                *ngFor="let item of senders$ | async"
+                [value]="item"
+            >
+                {{ item }}
+            </mat-option>
+
+        </mat-autocomplete>
+    </mat-form-field>
+
+
+    <!-- manager -->
+    <mat-form-field>
+        <input
+            matInput
+            type="text"
+            placeholder="manager"
+            formControlName="manager"
+            [matAutocomplete]="managerAutocomplete"
+        />
+
+        <mat-autocomplete #managerAutocomplete="matAutocomplete">
+
+            <mat-option
+                *ngFor="let item of managers$ | async"
+                [value]="item"
+            >
+                {{ item.name }}
+            </mat-option>
+
+        </mat-autocomplete>
+
+    </mat-form-field>
+
+    <!-- courier -->
+    <mat-form-field>
+        <input
+            matInput
+            type="text"
+            placeholder="courier"
+            formControlName="courier"
+        />
+    </mat-form-field>
+
+    <!-- Receiver -->
+    <mat-card formGroupName="receiver">
+
+        <!-- Name -->
+        <mat-form-field>
+            <input
+                matInput
+                type="text"
+                placeholder="Receivers"
+                formControlName="name"
+            />
+
+            <mat-autocomplete #managerAutocomplete="matAutocomplete">
+
+                <mat-option
+                    *ngFor="let item of receivers$ | async"
+                    [value]="item"
+                >
+                    {{ item.name }}
+                </mat-option>
+
+            </mat-autocomplete>
+
+        </mat-form-field>
+
+        <!-- Address -->
+        <mat-form-field>
+            <input
+                matInput
+                type="text"
+                placeholder="address"
+                formControlName="address"
+            />
+        </mat-form-field>
+
+        <!-- Contact -->
+        <mat-form-field>
+            <input
+                matInput
+                type="text"
+                placeholder="contact"
+                formControlName="contact"
+            />
+        </mat-form-field>
+
+        <!-- Phone -->
+        <mat-form-field>
+            <input
+                matInput
+                type="text"
+                placeholder="phone"
+                formControlName="phone"
+            />
+        </mat-form-field>
+
+        <!-- Country -->
+        <mat-form-field>
+            <input
+                matInput
+                type="text"
+                placeholder="country"
+                formControlName="country"
+            />
+        </mat-form-field>
+
+    </mat-card>
+
+    <!-- Bill to -->
+    <mat-form-field>
+        <input
+            matInput
+            type="text"
+            placeholder="Bill to"
+            formControlName="client"
+            [matAutocomplete]="billToAutocomplete"
+            required
+        />
+
+        <mat-autocomplete #billToAutocomplete="matAutocomplete">
+
+            <mat-option
+                *ngFor="let item of shippers$ | async"
+                [value]="item"
+            >
+                {{ item.name }}
+            </mat-option>
+
+        </mat-autocomplete>
+
+    </mat-form-field>
+
+    <!-- company -->
+    <mat-form-field>
+        <input
+            matInput
+            type="text"
+            placeholder="Companies"
+            formControlName="company"
+            [matAutocomplete]="companyAutocomplete"
+            required
+        />
+
+        <mat-autocomplete
+            #companyAutocomplete="matAutocomplete"
+            [displayWith]="display.company"
+        >
+
+            <mat-option
+                *ngFor="let item of companies$ | async"
+                [value]="item"
+            >
+                {{ item.name }}
+            </mat-option>
+
+        </mat-autocomplete>
+
+    </mat-form-field>
+
+    <!-- Contact -->
+    <mat-form-field>
+        <input
+            matInput
+            type="text"
+            placeholder="contact"
+            formControlName="contact"
+        />
+    </mat-form-field>
+
+
+    <app-form-controls
+        [formGroup]="formGroup"
+        [controlPanel]="controls"
+    ></app-form-controls>
+
+</form>
+
+
+<!--dev info-->
+<app-developer-info title="dev info">
+    Assignee:
+    <p>{{client | json}}</p>
+</app-developer-info>

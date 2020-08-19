@@ -1,0 +1,28 @@
+@import "../../../../../../../../app.styles";
+
+:host {
+    display: flex;
+    padding: 5px 24px;
+    max-height: 20px;
+
+    ::ng-deep {
+        mat-list-item {
+            .mat-list-item-content {
+                padding: 0 24px;
+
+                mat-icon {
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+
+    &:hover {
+        cursor: pointer;
+        background: rgba(0, 0, 0, .04);
+    }
+
+    span {
+        @include text-no-wrap;
+    }
+}

@@ -1,0 +1,54 @@
+@import "../../forms";
+
+:host {
+    
+    @include app-form;
+    padding: 0;
+
+    ::ng-deep {
+
+        div.mat-expansion-panel-body {
+            // display: flex;
+            // flex-direction: column;
+        }
+
+        .mat-expansion-panel-header-title {
+            span:nth-child(1) {
+                display: flex;
+                align-items: center;
+
+                .mat-icon {
+                    margin-right: 8px;
+                }
+            }
+
+            span:nth-child(2) {
+                font-size: small;
+                align-self: flex-end;
+                margin-left: auto;
+            }
+        }
+
+        .inline-form {
+            display: flex;
+
+            .mat-form-field {
+                &:nth-child(1) {
+                    max-width: 150px;
+                }
+
+                &:nth-child(2) {
+                    max-width: 60px;
+                }
+
+                .mat-form-field-prefix,
+                .mat-form-field-suffix {
+                    opacity: 0.5;
+                }
+            }
+        }
+        
+        // .preview {
+        // }
+    }
+}

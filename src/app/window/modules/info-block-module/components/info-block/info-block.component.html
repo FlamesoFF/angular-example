@@ -1,0 +1,25 @@
+<span class="info-block-controls">
+    <button mat-icon-button
+            matTooltip="Quotes"
+            color="disabled"
+            *ngIf="quotes"
+            (click)="openQuotes()">
+        <mat-icon [matBadge]="quotes.getCount()">format_quote</mat-icon>
+    </button>
+
+    <button mat-icon-button
+            matTooltip="Comments"
+            color="disabled"
+            *ngIf="comments"
+            (click)="openComments()">
+        <mat-icon [matBadge]="comments.getCount()">mode_comment</mat-icon>
+    </button>
+
+    <button mat-icon-button
+            matTooltip="Attachments"
+            color="disabled"
+            *ngIf="attachments"
+            (click)="openAttachments()">
+        <mat-icon [matBadge]="attachments.getCount()">attachment</mat-icon>
+    </button>
+</span>

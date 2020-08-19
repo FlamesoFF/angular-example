@@ -1,0 +1,8 @@
+<mat-divider></mat-divider>
+
+<mat-accordion>
+    <app-bill-item *ngFor="let bill of bills.items"
+                   (onEdit)="editBill(bill)"
+                   (onDelete)="remove(bill)"
+                   [bill]="bill"></app-bill-item>
+</mat-accordion>

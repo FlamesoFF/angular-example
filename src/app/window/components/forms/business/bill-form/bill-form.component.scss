@@ -1,0 +1,24 @@
+@import "../../forms";
+
+:host {
+    @include app-form;
+
+    .attachment {
+        padding: 10px 0;
+
+        > span {
+            display: flex;
+
+            > .icon {
+                $size: 20px;
+                width: $size;
+                height: $size;
+                padding-right: 5px;
+            }
+        }
+
+        .text {
+            color: gray;
+        }
+    }
+}

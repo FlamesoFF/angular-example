@@ -1,0 +1,9 @@
+<button mat-button
+        *ngIf="button.presence$? (button.presence$ | async) : true"
+        type="button"
+        color="primary"
+        (click)="click()">
+
+    {{button.text}}
+
+</button>

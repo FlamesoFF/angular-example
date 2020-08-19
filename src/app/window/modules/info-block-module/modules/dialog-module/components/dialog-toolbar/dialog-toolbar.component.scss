@@ -1,0 +1,16 @@
+:host {
+    $h: 60px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 24px;
+    align-items: center;
+
+    height: $h;
+    min-height: $h;
+
+    > .mat-dialog-title {
+        margin: 0;
+    }
+}

@@ -1,0 +1,52 @@
+:host {
+    ::ng-deep {
+        mat-accordion {
+            mat-expansion-panel {
+                mat-expansion-panel-header {
+                    .mat-content {
+                        display: flex;
+                        flex-grow: 1;
+                    }
+
+                    .avatar {
+                        display: flex;
+                        margin-right: 10px;
+                        align-items: center;
+
+                        img {
+                            $size: 32px;
+
+                            background: #673AB7;
+                            width: $size;
+                            height: $size;
+                            border-radius: 100%;
+                        }
+                    }
+
+                    .data {
+                        display: flex;
+                        flex-direction: column;
+                        flex-grow: 1;
+                        overflow: hidden;
+
+                        .text {
+                            overflow: hidden;
+                            text-wrap: none;
+                            text-overflow: ellipsis;
+                            white-space: nowrap;
+                        }
+                    }
+
+                    .controls {
+                        display: flex;
+                        align-self: flex-end;
+                    }
+                }
+
+                p.text {
+                    margin: 5px 0 5px 16px;
+                }
+            }
+        }
+    }
+}

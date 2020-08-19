@@ -1,0 +1,9 @@
+<div *ngFor="let control of controls.items">
+
+    <!--*ngIf="control.authority$ | async"-->
+
+    <button mat-icon-button
+            (click)="click($event, control.onClick)">
+        <mat-icon>{{control.icon}}</mat-icon>
+    </button>
+</div>

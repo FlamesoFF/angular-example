@@ -1,0 +1,90 @@
+<div class="form-title">
+
+    <app-drag-n-drop (onDrop)="onDrop($event)"></app-drag-n-drop>
+</div>
+
+<form [formGroup]="formGroup">
+    <mat-form-field>
+        <input matInput
+               type="text"
+               placeholder="Agent name"
+               formControlName="agent"
+               #agent
+               [matAutocomplete]="agentAutocomplete"
+               (keypress)="loadEntities(agent.value)"/>
+
+        <mat-autocomplete #agentAutocomplete="matAutocomplete"
+                          (optionSelected)="onAgentSelected($event)"
+                          [displayWith]="extractors.agents">
+
+            <mat-option *ngFor="let agent of dynamicData.agents$ | async"
+                        [value]="agent">
+                {{ agent.name }}
+            </mat-option>
+
+        </mat-autocomplete>
+    </mat-form-field>
+
+    <mat-form-field>
+        <input matInput
+               type="text"
+               placeholder="Bill number"
+               formControlName="billNumber"/>
+    </mat-form-field>
+
+
+    <mat-form-field>
+        <input matInput
+               type="text"
+               placeholder="Issued on"
+               formControlName="issuedOn"/>
+    </mat-form-field>
+
+    <mat-form-field>
+        <!--<input matInput
+               type="text"
+               placeholder="Invoice number"
+               formControlName="invoiceNumber"/>-->
+
+        <mat-chip-list #chipList>
+
+            <mat-chip *ngFor="let invoice of invoiceSearch.list"
+                      [selectable]="invoiceSearch.selectable"
+                      [removable]="invoiceSearch.removable"
+                      (removed)="invoiceSearch.remove(invoice)">
+
+                {{invoice}}
+
+                <mat-icon matChipRemove
+                          *ngIf="invoiceSearch.removable">cancel
+                </mat-icon>
+            </mat-chip>
+
+            <input formControlName="invoiceNumber"
+                   type="number"
+                   placeholder="Invoice number..."
+
+                   [matChipInputFor]="chipList"
+                   [matChipInputSeparatorKeyCodes]="invoiceSearch.separators"
+                   [matChipInputAddOnBlur]="invoiceSearch.addOnBlur"
+                   (matChipInputTokenEnd)="invoiceSearch.addAndSearch($event)">
+
+        </mat-chip-list>
+
+    </mat-form-field>
+
+    <mat-list>
+        <mat-list-item *ngFor="let item of invoiceSearch.searchResults">
+            {{item}}
+        </mat-list-item>
+    </mat-list>
+
+    <app-form-controls [formGroup]="formGroup"
+                       [controlPanel]="controls"></app-form-controls>
+</form>
+
+<!--dev info-->
+<app-developer-info title="dev info">
+    <p>Attachment: {{attachment | async}}</p>
+    <p>Agent: {{formGroup.controls.agent.value | json}}</p>
+</app-developer-info>

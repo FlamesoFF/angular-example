@@ -1,0 +1,44 @@
+<mat-expansion-panel>
+
+    <mat-expansion-panel-header>
+            <span class="icon">
+                <div class="text">{{ attachment.extension }}</div>
+
+                <svg viewBox="4 2 16 20">
+                    <path d="M13,9V3.5L18.5,9M6,2C4.89,2 4,2.89 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2H6Z"/>
+                </svg>
+            </span>
+
+        <div class="info mat-body-1">
+            <div class="details">{{ attachment.name }}</div>
+        </div>
+
+        <app-list-element-controls [controls]="controls"></app-list-element-controls>
+
+    </mat-expansion-panel-header>
+
+    <!--content-->
+
+    <table>
+        <tr *ngIf="attachment.uploaded_by">
+            <td>author:</td>
+            <td>{{attachment.uploaded_by ? attachment.uploaded_by.name : attachment.uploaded_by.name}}</td>
+        </tr>
+
+        <tr *ngIf="attachment.content">
+            <td>size:</td>
+            <td>{{attachment.content.size}} Kb</td>
+        </tr>
+
+        <tr *ngIf="attachment.uploaded_on">
+            <td>created:</td>
+            <td>{{attachment.uploaded_on}}</td>
+        </tr>
+
+        <tr *ngIf="attachment.updated_on">
+            <td>updated:</td>
+            <td>{{attachment.updated_on}}</td>
+        </tr>
+    </table>
+
+</mat-expansion-panel>

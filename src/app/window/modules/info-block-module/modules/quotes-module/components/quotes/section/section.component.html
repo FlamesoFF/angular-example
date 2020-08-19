@@ -1,0 +1,6 @@
+<app-quote-item *ngFor="let item of section.items"
+                [item]="item"
+                (click)="openQuote(item)"
+                (onRemove)="removeQuote(item)"></app-quote-item>
+
+<mat-divider *ngIf="index < section.items.length"></mat-divider>

@@ -1,0 +1,34 @@
+<mat-toolbar>
+    <div class="title">
+        <span *ngIf="authorized$ | async">{{ username$ | async }}</span>
+        <span *ngIf="!(authorized$ | async)">Unauthorized</span>
+    </div>
+
+    <div>
+        <button
+            mat-icon-button
+            matTooltip="Reload"
+            (click)="reload()"
+        >
+            <mat-icon>refresh</mat-icon>
+        </button>
+
+        <button
+            mat-icon-button
+            matTooltip="Settings"
+            (click)="openSettings()"
+            *ngIf="!(inSettings$ | async)"
+        >
+            <mat-icon>settings</mat-icon>
+        </button>
+
+        <button
+            mat-icon-button
+            matTooltip="Log out"
+            routerLink="/login"
+            (click)="signOut()"
+        >
+            <mat-icon>exit_to_app</mat-icon>
+        </button>
+    </div>
+</mat-toolbar>

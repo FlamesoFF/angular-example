@@ -1,0 +1,27 @@
+<mat-expansion-panel>
+    <mat-expansion-panel-header>
+
+        <span class="avatar">
+            <img src="" alt="">
+        </span>
+
+        <div class="data">
+            <div class="title mat-caption">
+                <b>{{ comment.user.name }}</b> | {{ comment.created_on }}
+            </div>
+
+            <div class="text mat-caption">
+                {{ comment.text }}
+            </div>
+        </div>
+
+        <app-list-element-controls [controls]="controls"></app-list-element-controls>
+
+    </mat-expansion-panel-header>
+
+    <mat-divider></mat-divider>
+
+    <p class="text">
+        {{ comment.text }}
+    </p>
+</mat-expansion-panel>

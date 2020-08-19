@@ -1,0 +1,127 @@
+<div class="form-title"></div>
+
+<form
+    [formGroup]="formGroup"
+    ngxsForm='contact.form'
+    autocomplete="off"
+    (ngSubmit)="onSubmit()"
+>
+
+    <!-- CONTACT NAME -->
+    <mat-form-field>
+        <input
+            matInput
+            #name
+            type="text"
+            placeholder="Name"
+            formControlName="name"
+            required
+        />
+
+        <span
+            matSuffix
+            class="field-suffix"
+        >{{ (model$ | async).initials }}</span>
+
+        <!-- <mat-autocomplete #nameAutocomplete="matAutocomplete"
+                          (optionSelected)="setFormValue($event.option, formGroup)"
+                          [displayWith]="data.extractors.name">
+
+            <mat-option *ngFor="let person of data.observable.persons$ | async"
+                        [value]="person">
+                {{ person.name }}
+            </mat-option>
+
+        </mat-autocomplete> -->
+
+        <mat-error *ngIf="formGroup.get('name').valid === false">
+            This fields is required!
+        </mat-error>
+
+    </mat-form-field>
+
+    <!-- CONTACT EMAIL -->
+    <mat-form-field>
+        <input
+            matInput
+            type="email"
+            placeholder="Email"
+            formControlName="email"
+            required
+        />
+
+        <mat-error *ngIf="formGroup.get('email').valid === false">
+            This fields is required!
+        </mat-error>
+
+    </mat-form-field>
+
+    <!-- CONTACT INITIALS -->
+    <!-- <mat-form-field>
+        <input matInput
+               type="text"
+               placeholder="Initials"
+               formControlName="initials"
+               required />
+
+        <mat-error *ngIf="formGroup.get('initials').valid === false">
+            This fields is required!
+        </mat-error>
+
+    </mat-form-field> -->
+
+    <!-- CLIENT -->
+    <!-- {{ (client$ | async).model | json }} -->
+
+    <mat-form-field>
+        <input
+            matInput
+            #client
+            type="text"
+            placeholder="Client"
+            formControlName="client"
+            [matAutocomplete]="clientAutocomplete"
+            required
+        />
+
+        <!-- <mat-icon matSuffix>assignment_turned_in</mat-icon> -->
+        <mat-spinner
+            *ngIf="true"
+            diameter="20"
+            matSuffix
+        ></mat-spinner>
+
+        <mat-autocomplete
+            #clientAutocomplete="matAutocomplete"
+            (optionSelected)="onClientSelect($event)"
+            [displayWith]="display.client"
+        >
+
+            <mat-option
+                *ngFor="let item of clients$ | async"
+                [value]="item"
+            >
+                {{ item.name }}
+            </mat-option>
+
+        </mat-autocomplete>
+
+        <mat-error *ngIf="formGroup.get('client').valid === false">
+            This fields is required!
+        </mat-error>
+    </mat-form-field>
+
+
+    <app-form-controls
+        [formGroup]="formGroup"
+        [controlPanel]="controls"
+    ></app-form-controls>
+
+</form>
+
+
+<!--dev info-->
+<app-developer-info title="dev info">
+    Assignee:
+    <p>{{client | json}}</p>
+</app-developer-info>

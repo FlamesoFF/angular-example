@@ -1,0 +1,6 @@
+<div *ngIf="controlPanel">
+    <control-button *ngFor="let button of controlPanel.buttons | object"
+                    [button]="button"
+                    [formGroup]="formGroup"
+                    (onClick)="button.onClick()"></control-button>
+</div>

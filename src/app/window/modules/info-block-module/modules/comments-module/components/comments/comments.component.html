@@ -1,0 +1,8 @@
+<mat-divider></mat-divider>
+
+<mat-accordion>
+        <app-comment-item *ngFor="let comment of comments.items"
+                          (onEdit)="editComment(comment)"
+                          (onDelete)="remove(comment)"
+                          [comment]="comment"></app-comment-item>
+</mat-accordion>

@@ -1,0 +1,41 @@
+{
+    "manifest_version": 2,
+    "version": "0.3.1.0",
+    "name": "Gmail Grabber 2",
+    "short_name": "GG-2",
+    "description": "Gmail Grabber 2 (alpha)",
+    "permissions": [
+        "contextMenus",
+        "tabs",
+        "storage",
+        "downloads",
+        "https://localhost/*",
+        "https://127.0.0.1/*",
+        "http://localhost/*",
+        "http://127.0.0.1/*",
+        "https://mail-attachment.googleusercontent.com/attachment/*"
+    ],
+    "background": {
+        "scripts": ["background-script/background.bundle.js"]
+    },
+
+    "content_scripts": [
+        {
+            "matches": [
+                "https://mail.google.com/*",
+                "https://inbox.google.com/*"
+            ],
+            "js": [
+                "libs/inboxsdk.js",
+                "content.bundle.js"
+            ]
+        }
+    ],
+    "web_accessible_resources": [
+        "window/*",
+        "assets/*",
+        "background-script/*",
+        "libs/*"
+    ],
+    "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self' "
+}

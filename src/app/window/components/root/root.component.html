@@ -1,0 +1,30 @@
+<!--The whole data below can be removed with the new code.-->
+
+<app-toolbar (onExit)="exit()"></app-toolbar>
+
+<mat-tab-group *ngIf="(authorized$ | async) && !(settingsActive$ | async)"
+               (selectedTabChange)="navigate($event)">
+    <mat-tab *ngFor="let tab of getTabs()"
+             [label]="tab.title">
+    </mat-tab>
+</mat-tab-group>
+
+<!--<nav mat-tab-nav-bar-->
+<!--*ngIf="auth.$authorized | async">-->
+
+<!--<a mat-tab-link-->
+<!--*ngFor="let tab of getTabs()"-->
+<!--[routerLink]="tab.route"-->
+<!--routerLinkActive-->
+<!--#rla="routerLinkActive"-->
+<!--[active]="rla.isActive">-->
+<!--{{tab.title}}-->
+<!--</a>-->
+<!--</nav>-->
+
+<router-outlet></router-outlet>
+
+<div class="spinner-wrapper"
+     *ngIf="progress | async">
+    <mat-spinner></mat-spinner>
+</div>

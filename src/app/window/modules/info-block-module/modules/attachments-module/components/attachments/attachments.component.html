@@ -1,0 +1,5 @@
+<mat-accordion>
+    <app-attachment-component *ngFor="let attachment of attachments.items"
+                              [attachment]="attachment"
+                              (onRemove)="remove(attachment)"></app-attachment-component>
+</mat-accordion>

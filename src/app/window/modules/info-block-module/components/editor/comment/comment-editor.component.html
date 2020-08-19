@@ -1,0 +1,19 @@
+    <mat-form-field>
+        <input matInput
+               [(ngModel)]="item.user.name"
+               disabled
+               type="text"
+               placeholder="Author">
+    </mat-form-field>
+
+    <mat-form-field>
+            <textarea matInput
+                      [(ngModel)]="item.text"
+                      cdkAutosizeTextarea
+                      placeholder="Text"></textarea>
+    </mat-form-field>
+
+<p class="warning mat-caption"
+   *ngIf="! formGroup.pristine">
+    * you have unsaved changes
+</p>

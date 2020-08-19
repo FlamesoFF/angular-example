@@ -1,0 +1,5 @@
+@import "../../forms";
+
+:host{
+    @include app-form;
+}

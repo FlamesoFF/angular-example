@@ -1,0 +1,25 @@
+<mat-accordion *ngIf="quotes.sections">
+    <mat-expansion-panel *ngFor="let section of quotes.sections">
+
+        <mat-expansion-panel-header collapsedHeight="40px">
+            <mat-panel-title matTooltip="{{section[1].headers.subject}}">
+                {{section[1].headers.subject}}
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <mat-divider></mat-divider>
+
+        <div class="details mat-caption">
+            <div>
+                <b>From:</b> {{section[1].headers.from}}
+            </div>
+            <div>
+                <b>To:</b> {{section[1].headers.to}} : {{section[1].headers.date}}
+            </div>
+        </div>
+
+        <app-quotes-section [sectionKey]="section[0]"
+                            [section]="section[1]"
+                            (onRemove)="removeSection(section[0])"></app-quotes-section>
+    </mat-expansion-panel>
+</mat-accordion>

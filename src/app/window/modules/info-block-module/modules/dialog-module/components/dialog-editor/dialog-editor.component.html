@@ -1,0 +1,24 @@
+<app-dialog-toolbar [title]="data.title"></app-dialog-toolbar>
+
+<form [formGroup]="formGroup">
+    <mat-form-field>
+        <input matInput
+               disabled
+               type="text"
+               placeholder="Author"
+               formControlName="author">
+    </mat-form-field>
+
+    <mat-form-field>
+            <textarea matInput
+                      disabled
+                      cdkAutosizeTextarea
+                      placeholder="Text"
+                      formControlName="text"></textarea>
+    </mat-form-field>
+</form>
+
+<p class="warning mat-caption"
+     *ngIf="! formGroup.pristine">
+    * you have unsaved changes
+</p>

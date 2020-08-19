@@ -1,0 +1,18 @@
+:host {
+    display: flex;
+    flex-direction: column;
+
+    .title {
+        .subject {
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+    }
+
+    ::ng-deep {
+        mat-list-item {
+
+        }
+    }
+}

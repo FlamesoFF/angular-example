@@ -1,0 +1,23 @@
+@import "../../forms";
+
+:host {
+    @include app-form;
+
+    justify-content: space-around;
+
+    mat-card{
+        display: flex;
+        flex-direction: column;
+        width: 300px;
+        display: flex;
+        align-self: center;
+        align-items: center;
+
+        form{
+            .controls {
+                display: flex;
+                justify-content: center
+            }
+        }
+    }
+}

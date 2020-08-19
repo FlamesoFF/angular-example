@@ -1,0 +1,20 @@
+:host {
+    // height: 60px;
+    // min-height: 60px;
+
+    mat-toolbar {
+        display: flex;
+        flex-direction: row;
+
+        .title {
+            display: flex;
+            width: auto;
+            flex-grow: 1;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: flex-end;
+        }
+    }
+}

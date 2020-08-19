@@ -1,0 +1,54 @@
+@import '../../../../../../app.styles';
+
+@mixin expansion-one-line {
+    display: block;
+    padding: 9px 0;
+    vertical-align: middle;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+:host {
+    background: rgba(255, 255, 255, 0.25);
+
+    ::ng-deep {
+        mat-accordion {
+            mat-expansion-panel {
+                mat-expansion-panel-header {
+                    mat-panel-title, mat-panel-description {
+                        @include expansion-one-line;
+                    }
+
+                    .mat-content {
+                        margin-right: 10px;
+
+                        .header-text {
+                            display: flex;
+                            flex-direction: column;
+                            width: 100%;
+
+                            .subject {
+                                height: 42px;
+                            }
+                        }
+                    }
+                }
+
+                .mat-expansion-panel-body {
+                    padding: 0;
+
+                    .details {
+                        $color: rgba(0,0,0,0.1);
+                        $border: 5px solid $color;
+
+                        background: rgba(0,0,0,0.1);
+                        border-left: $border;
+                        border-right: $border;
+                        padding: 5px 20px;
+                    }
+                }
+            }
+        }
+    }
+}
